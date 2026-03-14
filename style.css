@@ -362,16 +362,20 @@ canvas {
         padding: 5px;
     }
 
-    .touch-layout {
-        padding: 0 8px;
+    .touch-controls {
+        min-height: 100px;
+    }
+
+    .touch-left {
+        left: 8px;
     }
 
     .touch-right {
+        right: 8px;
         gap: 3px;
     }
 
     .dpad-middle {
-        flex-direction: row !important;
         gap: 2px;
     }
 
