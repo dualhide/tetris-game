@@ -187,24 +187,29 @@ canvas {
 .touch-controls {
     margin-top: 10px;
     width: 100%;
+    position: relative;
+    min-height: 140px;
 }
 
 .touch-layout {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 0 15px;
+    padding: 0;
     width: 100%;
+    position: relative;
 }
 
 .touch-left {
-    flex: 0 0 auto;
-    margin-right: auto;
+    position: absolute;
+    left: 15px;
+    bottom: 0;
 }
 
 .touch-right {
-    flex: 0 0 auto;
-    margin-left: auto;
+    position: absolute;
+    right: 15px;
+    bottom: 0;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -493,13 +498,15 @@ canvas {
     /* タッチボタンのサイズ調整 */
     .touch-controls {
         margin: 5px 0;
+        min-height: 130px;
     }
 
-    .touch-layout {
-        padding: 0 10px;
+    .touch-left {
+        left: 10px;
     }
 
     .touch-right {
+        right: 10px;
         gap: 6px;
     }
 
@@ -518,7 +525,6 @@ canvas {
     }
 
     .dpad-middle {
-        flex-direction: row !important;
         gap: 3px;
     }
 }
@@ -557,6 +563,19 @@ canvas {
         height: 50px;
     }
 
+    .touch-controls {
+        min-height: 120px;
+    }
+
+    .touch-left {
+        left: 8px;
+    }
+
+    .touch-right {
+        right: 8px;
+        gap: 5px;
+    }
+
     .arrow-btn {
         min-width: 45px;
         min-height: 45px;
@@ -571,16 +590,7 @@ canvas {
         padding: 8px;
     }
 
-    .touch-layout {
-        padding: 0 8px;
-    }
-
-    .touch-right {
-        gap: 5px;
-    }
-
     .dpad-middle {
-        flex-direction: row !important;
         gap: 3px;
     }
 
@@ -627,6 +637,19 @@ canvas {
         height: 45px;
     }
 
+    .touch-controls {
+        min-height: 110px;
+    }
+
+    .touch-left {
+        left: 5px;
+    }
+
+    .touch-right {
+        right: 5px;
+        gap: 4px;
+    }
+
     .arrow-btn {
         min-width: 42px;
         min-height: 42px;
@@ -641,16 +664,7 @@ canvas {
         padding: 6px;
     }
 
-    .touch-layout {
-        padding: 0 5px;
-    }
-
-    .touch-right {
-        gap: 4px;
-    }
-
     .dpad-middle {
-        flex-direction: row !important;
         gap: 2px;
     }
 
