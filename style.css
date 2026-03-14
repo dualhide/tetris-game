@@ -7,7 +7,7 @@
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,10 +27,12 @@ body {
 .container {
     background: white;
     border-radius: 20px;
-    padding: 30px;
+    padding: 20px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    max-width: 600px;
+    max-width: 500px;
     width: 100%;
+    max-height: 95vh;
+    overflow-y: auto;
 }
 
 h1 {
@@ -72,6 +74,7 @@ h1 {
 .game-area {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     gap: 20px;
     margin-bottom: 20px;
 }
@@ -155,7 +158,7 @@ canvas {
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
     text-align: center;
-    z-index: 1000;
+    z-index: 9999;
 }
 
 .game-over h2 {
@@ -182,13 +185,11 @@ canvas {
 
 /* タッチ操作ボタン */
 .touch-controls {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    width: 90%;
+    margin-top: 20px;
+    width: 100%;
     max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .touch-row {
@@ -241,6 +242,75 @@ canvas {
     background: linear-gradient(135deg, rgba(67, 233, 123, 0.95) 0%, rgba(56, 249, 215, 0.95) 100%);
 }
 
+/* 横向き（ランドスケープ）モード */
+@media (max-width: 768px) and (orientation: landscape) {
+    .container {
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    h1 {
+        font-size: 0.9em;
+        margin: 2px 0;
+    }
+
+    .game-info {
+        margin: 2px 0;
+    }
+
+    .score-box, .level-box, .lines-box {
+        padding: 3px 5px;
+    }
+
+    .score-box h2, .level-box h2, .lines-box h2 {
+        font-size: 0.55em;
+    }
+
+    #score, #level, #lines {
+        font-size: 0.9em;
+    }
+
+    .game-area {
+        flex: 1;
+        margin: 2px 0;
+    }
+
+    canvas#tetris {
+        height: calc(100vh - 140px);
+        max-width: 50vw;
+    }
+
+    canvas#next {
+        width: 50px;
+        height: 50px;
+    }
+
+    .buttons {
+        margin: 2px 0;
+    }
+
+    .btn {
+        padding: 4px 8px;
+        font-size: 0.65em;
+    }
+
+    .touch-controls {
+        margin: 2px 0;
+    }
+
+    .touch-btn {
+        min-width: 45px;
+        min-height: 45px;
+        font-size: 0.85em;
+        padding: 5px;
+    }
+
+    .touch-row {
+        gap: 4px;
+        margin-bottom: 3px;
+    }
+}
+
 @media (max-width: 768px) {
     body {
         padding: 0;
@@ -255,84 +325,95 @@ canvas {
     }
 
     .container {
-        padding: 10px;
-        padding-bottom: 180px; /* タッチボタンの分の余白 */
+        padding: 5px;
         width: 100%;
         max-width: 100%;
+        height: 100vh;
         border-radius: 0;
         box-shadow: none;
         background: transparent;
-        min-height: 100vh;
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
     }
     
     h1 {
-        font-size: 1.5em;
-        margin-bottom: 10px;
+        font-size: 1.2em;
+        margin: 5px 0;
         color: white;
         text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     }
     
     .game-info {
         gap: 5px;
-        margin-bottom: 10px;
+        margin: 5px 0;
     }
 
     .score-box, .level-box, .lines-box {
-        padding: 8px;
+        padding: 5px 8px;
         backdrop-filter: blur(10px);
     }
 
     .score-box h2, .level-box h2, .lines-box h2 {
-        font-size: 0.7em;
+        font-size: 0.65em;
+        margin-bottom: 2px;
     }
 
     #score, #level, #lines {
-        font-size: 1.3em;
+        font-size: 1.1em;
     }
     
     .game-area {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        justify-content: center;
         gap: 10px;
         flex: 1;
-        justify-content: center;
+        margin: 5px 0;
     }
 
     canvas#tetris {
-        width: 100vw;
-        max-width: calc(100vh - 400px);
-        height: auto;
+        height: calc(100vh - 260px);
+        width: auto;
+        max-width: 70vw;
         border-width: 2px;
     }
 
     .next-piece {
-        flex-direction: row;
-        gap: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
         align-items: center;
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
-        padding: 10px;
+        padding: 8px;
         border-radius: 10px;
     }
 
     .next-piece h3 {
-        margin-bottom: 0;
+        margin: 0;
         color: white;
-        font-size: 0.9em;
+        font-size: 0.75em;
+    }
+
+    canvas#next {
+        width: 60px;
+        height: 60px;
     }
     
     .buttons {
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 10px;
+        display: flex;
+        gap: 5px;
+        margin: 5px 0;
+        justify-content: center;
     }
 
     .btn {
-        padding: 8px 16px;
-        font-size: 0.9em;
+        padding: 6px 12px;
+        font-size: 0.75em;
         backdrop-filter: blur(10px);
+        flex: 1;
+        max-width: 100px;
     }
 
     .game-over {
@@ -347,77 +428,126 @@ canvas {
 
     /* タッチボタンのサイズ調整 */
     .touch-controls {
-        bottom: 10px;
-        width: 95%;
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
+        max-width: 100%;
+        margin: 5px 0;
     }
 
     .touch-btn {
-        min-width: 65px;
-        min-height: 65px;
-        font-size: 1.2em;
-        padding: 12px;
+        min-width: 55px;
+        min-height: 55px;
+        font-size: 1em;
+        padding: 8px;
+    }
+
+    .touch-row {
+        gap: 5px;
+        margin-bottom: 5px;
     }
 }
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.3em;
+        font-size: 1em;
+        margin: 3px 0;
     }
 
     .game-info {
         flex-direction: row;
+        margin: 3px 0;
     }
 
     .score-box, .level-box, .lines-box {
-        padding: 6px;
+        padding: 4px 6px;
     }
 
     .score-box h2, .level-box h2, .lines-box h2 {
-        font-size: 0.65em;
+        font-size: 0.6em;
+        margin-bottom: 1px;
     }
 
     #score, #level, #lines {
-        font-size: 1.2em;
+        font-size: 1em;
     }
 
     canvas#tetris {
-        width: 95vw;
-        max-width: calc(100vh - 350px);
+        height: calc(100vh - 240px);
+        max-width: 65vw;
     }
 
-    .touch-controls {
-        bottom: 5px;
-        width: 98%;
+    canvas#next {
+        width: 50px;
+        height: 50px;
     }
 
     .touch-btn {
-        min-width: 60px;
-        min-height: 60px;
-        font-size: 1.1em;
-        padding: 10px;
+        min-width: 50px;
+        min-height: 50px;
+        font-size: 0.9em;
+        padding: 6px;
     }
 
     .touch-row {
-        gap: 8px;
-        margin-bottom: 8px;
+        gap: 4px;
+        margin-bottom: 4px;
     }
 
     .buttons {
-        flex-direction: row;
-        width: 100%;
-        justify-content: center;
+        gap: 4px;
+        margin: 3px 0;
     }
 
     .btn {
-        flex: 1;
-        min-width: 80px;
+        padding: 5px 10px;
+        font-size: 0.7em;
+        max-width: 90px;
     }
 
     .next-piece {
-        padding: 8px;
+        padding: 6px;
     }
 
     .next-piece h3 {
-        font-size: 0.8em;
+        font-size: 0.7em;
+    }
+}
+
+@media (max-width: 380px) {
+    h1 {
+        font-size: 0.9em;
+    }
+
+    .score-box h2, .level-box h2, .lines-box h2 {
+        font-size: 0.55em;
+    }
+
+    #score, #level, #lines {
+        font-size: 0.9em;
+    }
+
+    canvas#tetris {
+        height: calc(100vh - 220px);
+        max-width: 60vw;
+    }
+
+    canvas#next {
+        width: 45px;
+        height: 45px;
+    }
+
+    .touch-btn {
+        min-width: 45px;
+        min-height: 45px;
+        font-size: 0.85em;
+        padding: 5px;
+    }
+
+    .btn {
+        padding: 4px 8px;
+        font-size: 0.65em;
     }
 }
