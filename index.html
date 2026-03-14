@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テトリス - 楽しいパズルゲーム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 テトリス 🎮</h1>
+        
+        <div class="game-info">
+            <div class="score-box">
+                <h2>スコア</h2>
+                <div id="score">0</div>
+            </div>
+            <div class="level-box">
+                <h2>レベル</h2>
+                <div id="level">1</div>
+            </div>
+            <div class="lines-box">
+                <h2>消した行</h2>
+                <div id="lines">0</div>
+            </div>
+        </div>
+
+        <div class="game-area">
+            <canvas id="tetris" width="240" height="400"></canvas>
+            <div class="next-piece">
+                <h3>次のブロック</h3>
+                <canvas id="next" width="80" height="80"></canvas>
+            </div>
+        </div>
+
+        <div class="controls">
+            <h3>操作方法</h3>
+            <p>⬅️ 左矢印：左に動かす</p>
+            <p>➡️ 右矢印：右に動かす</p>
+            <p>⬇️ 下矢印：早く落とす</p>
+            <p>⬆️ 上矢印：回転させる</p>
+            <p>スペース：一番下まで落とす</p>
+        </div>
+
+        <div class="buttons">
+            <button id="startBtn" class="btn">スタート</button>
+            <button id="pauseBtn" class="btn" disabled>ポーズ</button>
+            <button id="restartBtn" class="btn" disabled>リスタート</button>
+        </div>
+
+        <div id="gameOver" class="game-over hidden">
+            <h2>ゲームオーバー！</h2>
+            <p>スコア: <span id="finalScore">0</span></p>
+            <button onclick="location.reload()" class="btn">もう一度プレイ</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
