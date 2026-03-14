@@ -33,13 +33,26 @@
             </div>
         </div>
 
-        <div class="controls">
+        <div class="controls desktop-only">
             <h3>操作方法</h3>
             <p>⬅️ 左矢印：左に動かす</p>
             <p>➡️ 右矢印：右に動かす</p>
             <p>⬇️ 下矢印：早く落とす</p>
             <p>⬆️ 上矢印：回転させる</p>
             <p>スペース：一番下まで落とす</p>
+        </div>
+
+        <!-- スマホ用タッチ操作ボタン -->
+        <div class="touch-controls mobile-only">
+            <div class="touch-row">
+                <button class="touch-btn rotate-btn" id="rotateBtn">🔄<br>回転</button>
+                <button class="touch-btn drop-btn" id="dropBtn">⬇️<br>ドロップ</button>
+            </div>
+            <div class="touch-row">
+                <button class="touch-btn arrow-btn" id="leftBtn">⬅️</button>
+                <button class="touch-btn arrow-btn" id="downBtn">⬇️</button>
+                <button class="touch-btn arrow-btn" id="rightBtn">➡️</button>
+            </div>
         </div>
 
         <div class="buttons">

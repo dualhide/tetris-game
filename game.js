@@ -324,6 +324,68 @@ document.addEventListener('keydown', (e) => {
     drawPiece();
 });
 
+// タッチ操作ボタン
+const leftBtn = document.getElementById('leftBtn');
+const rightBtn = document.getElementById('rightBtn');
+const downBtn = document.getElementById('downBtn');
+const rotateBtn = document.getElementById('rotateBtn');
+const dropBtn = document.getElementById('dropBtn');
+
+if (leftBtn) {
+    leftBtn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        if (!isGameOver && currentPiece) {
+            moveLeft();
+            drawBoard();
+            drawPiece();
+        }
+    });
+}
+
+if (rightBtn) {
+    rightBtn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        if (!isGameOver && currentPiece) {
+            moveRight();
+            drawBoard();
+            drawPiece();
+        }
+    });
+}
+
+if (downBtn) {
+    downBtn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        if (!isGameOver && currentPiece) {
+            moveDown();
+            drawBoard();
+            drawPiece();
+        }
+    });
+}
+
+if (rotateBtn) {
+    rotateBtn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        if (!isGameOver && currentPiece) {
+            rotate();
+            drawBoard();
+            drawPiece();
+        }
+    });
+}
+
+if (dropBtn) {
+    dropBtn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        if (!isGameOver && currentPiece) {
+            hardDrop();
+            drawBoard();
+            drawPiece();
+        }
+    });
+}
+
 // ボタン操作
 document.getElementById('startBtn').addEventListener('click', () => {
     board = Array(ROWS).fill().map(() => Array(COLS).fill(0));
